@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Autonomous Recycling Robot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../index.css"></head>
+  <body>
+    <div id="loading">
+      <div id="spinner"></div>
+    </div>
+    <a href="/" class="go_back"><i class="fas fa-arrow-left"></i></a>
+    <div id="background_overlay"></div>
+    <div id="background" style="background: url(top_image.jpeg) center;"></div>
+    <table id="profile_blog">
+      <tbody>
+        <tr>
+          <td style="width:8vw;"><div id="profile_img_blog"></div></td>
+          <td style="width:52vw;">
+            <div id="username_blog"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="blog-display">
+      <h1 id="blog_title">Autonomous Recycling Robot</h1>
+      <h2 id="blog_sub_title">The infamous UBC Engineering Physics robot summer... but remote!</h2>
+      <div id="blog"><p id="para_1_original">Every year, UBC's <a href="https://www.engphys.ubc.ca/">Engineering Physics program</a> runs a project course that is commonly known as "robot summer". The course challenges us to build an autonomous robot from scratch (including the electronics, the firmware, the mechanical parts) to complete a challenge assigned to us.
+
+Generally, students get to work with cool laser and waterjet cutters and build complex robots that can drive, zipline, retrieve objects using their acrylic/hardwood/sheet metal robots that like this:
+
+<img src="https://pbs.twimg.com/media/D0mTW1TUwAE3CMN.jpg">
+
+However, my class unfortunately became the guinea pigs for the first remote version of the course (thanks COVID), so our robots ended up looking more like this:
+</p><img src="img_0.jpeg" alt="blog image 0" id="img_0_original"><p id="para_2_original">That being said, I still learned a lot from the overall experience. I learned how easy it is to build a moving robot from off-the-shelf items like plastic boards. I learned that glue gun glue is actually very heavy. I learned how to solder for the first time, got to work with various analog circuits, and in the process learn about embedded systems through a hands-on project. I could go on for different "things I learned" from the project, and I guess the most important thing I learned from this is <b>how to tackle a multidisciplinary project and integrate different engineering specialties (ie. mechanical, firmware, software, electrical) together</b>.
+
+For my part, I dived right into <a href="https://github.com/CharLee674/TeamDoof/blob/master/elec%20schematics/Schematic%202.2.pdf">&gt;our circuitry</a> and <a href="https://github.com/CharLee674/TeamDoof">our Arduino-based codebase</a>.</p></div>
+    </div>
+    <div id="footer_blog">
+      <a href="https://github.com/imfunniee" target="_blank">made on earth by a human</a>
+    </div>
+    <script type="text/javascript">
+      setTimeout(function() {
+        document.getElementById("loading").classList.add("animated");
+        document.getElementById("loading").classList.add("fadeOut");
+        setTimeout(function() {
+          document.getElementById("loading").classList.remove("animated");
+          document.getElementById("loading").classList.remove("fadeOut");
+          document.getElementById("loading").style.display = "none";
+        }, 800);
+      }, 1500);
+      $.getJSON("../../config.json", function(user) {
+        var icon = document.createElement("link");
+        icon.setAttribute("rel", "icon");
+        icon.setAttribute("href", user[0].userimg);
+        icon.setAttribute("type", "image/png");
+        document.getElementsByTagName("head")[0].appendChild(icon);
+        document.getElementById(
+          "profile_img_blog"
+        ).style.background = `url('${user[0].userimg}') center center`;
+        document.getElementById(
+          "username_blog"
+        ).innerHTML = `<span style="display:${
+          user[0].name == null || !user[0].name ? "none" : "block"
+        };">${user[0].name}</span>@${user[0].username}<b id="blog_time"></b>`;
+
+        if ((user[0].theme = "dark.css")) {
+          document.querySelector("#background_overlay").style.background =
+            "linear-gradient(0deg, rgba(10, 10, 10, 1), rgba(10, 10, 10, 0.1))";
+        } else {
+          document.querySelector("#background_overlay").style.background =
+            "linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.1))";
+        }
+      });
+    </script>
+  
+
+</body></html>
